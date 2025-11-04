@@ -25,15 +25,17 @@ jobs:
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
+
     - name: Install dependencies
       run: dotnet restore
+    
     - name: Build
       run: dotnet build Source/NoDialogCeleste.csproj --configuration Release --no-restore
       env:
         CelestePrefix: ${{ github.workspace }}/lib-stripped
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v5
       with:
         name: NoDialogCeleste
         path: |
